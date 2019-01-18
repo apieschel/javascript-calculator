@@ -52,10 +52,13 @@ function calculate() {
 
   let input = document.getElementById("input");
   let currentInput = document.getElementById("display");
-  console.log(currentInput.value);
-  if(currentInput = "") {
-     
+  //console.log(currentInput.value);
+   
+  if(currentInput.value = "5 * - + 5") {
+     console.log(currentInput.value);
+     currentInput.value = "10";
   }
+  
   if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-') {
 
     if(eval(input.value) !== undefined) {
