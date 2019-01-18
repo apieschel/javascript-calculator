@@ -52,7 +52,10 @@ function calculate() {
 
   let input = document.getElementById("input");
   let currentInput = document.getElementById("display");
-
+  console.log(currentInput.value);
+  if(currentInput = "") {
+     
+  }
   if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-') {
 
     if(eval(input.value) !== undefined) {
