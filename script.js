@@ -1,7 +1,7 @@
 let submitBtn = document.getElementById("equals");
 let clear = document.getElementById("clear");
 let clearLast = document.getElementById("clearLast");
-let currentInput = document.getElementById("currentInput");
+let currentInput = document.getElementById("display");
 let valuesArray = [];
 let numbers = document.querySelectorAll(".number");
 
@@ -51,7 +51,7 @@ clearLast.addEventListener("click", clearLastValue);
 function calculate() {
 
   let input = document.getElementById("input");
-  let currentInput = document.getElementById("currentInput");
+  let currentInput = document.getElementById("display");
 
   if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-') {
 
@@ -68,7 +68,7 @@ function calculate() {
 
 function clearValue() {
   let input = document.getElementById("input");
-  let currentInput = document.getElementById("currentInput");
+  let currentInput = document.getElementById("display");
   input.value = "";
   currentInput.value = "";
   valuesArray = [];

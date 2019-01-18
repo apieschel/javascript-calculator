@@ -191,7 +191,7 @@
 	color: white;
 }
 
-#input, #currentInput {
+#input, #display {
 	width:100%;
 	border: none;
 	background: transparent;
@@ -216,7 +216,7 @@
 	50% { border-color: #5999ff; }
 }
 
-#currentInput {
+#display {
 	height: 25%;
 	font-size: 16px;
 	color: #abaaa5;
