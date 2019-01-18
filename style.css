@@ -1,11 +1,255 @@
-/* CSS files add styling rules to your content */
-
-body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
+.page-template-page-javascript-calculator .container h1 {
+	text-align: center; 
+	margin-top: 0;
+	color: black;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+.page-template-page-javascript-calculator .container p {
+	margin-bottom: 3%;
+	color: black;
+}
+
+.page-template-page-javascript-calculator {
+	box-sizing: border-box;
+	padding-bottom:  10%;
+}
+
+.phone-exterior {
+	margin: 0 auto;
+	width: 300px;
+	border: solid 1px black;
+	border-radius: 20px;
+	border-style: outset;
+	box-shadow: 1px 1px 1px 1px #eeeeee;
+	box-sizing: border-box;
+	background-color:white;
+	box-shadow: 0 0 0 1px silver;
+}
+
+.phone-exterior h1 {
+	text-align: center; 
+	font-size: 16px;
+	text-transform: uppercase; 
+	color: silver;
+	margin-top: 0;
+}
+
+.screen-exterior {
+	margin: 0 auto;
+	width: 280px;
+	height: 440px;
+	border: solid 2px black;
+	border-radius: 5px;
+	z-index: 999;
+	box-sizing: border-box;
+}
+
+.cover-circle {
+	margin: 0 auto; 
+	margin-top:5%;
+	margin-bottom:5%;
+	width: 60px; 
+	height: 20px; 
+	border: solid 1px black;
+	border-radius: 50px;
+	background-color:white;
+	box-shadow: 0 0 0 1px silver;
+}
+
+.top-row-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 3% 0 3% 0;
+}
+
+.circle1 {
+	height:10px; 
+	width: 10px; 
+	background-color: black;
+	border-radius: 100%;
+	margin-right: 1.5%;
+}
+
+.silver-line {
+	height:7px; 
+	width: 50px; 
+	background-color: silver;
+	border-radius: 10px;
+	margin-right: 10%;
+	padding: 0 2% 0 2%;
+	display: flex; 
+	justify-content: space-around; 
+	align-items: center;
+}
+
+.circle2 {
+	height:10px; 
+	width: 10px; 
+	background-color: black;
+	border-radius: 100%;
+	margin-right: 3%;
+}
+
+.circle3 {
+	height:15px; 
+	width: 15px; 
+	background-color: black;
+	border-radius: 100%;
+	display: flex; 
+	justify-content: center; 
+	align-items: center;
+}
+
+.blinking-circle {
+	height:7px; 
+	width: 7px; 
+	border-radius: 100%;
+	background-color: #2dfc49;
+	box-shadow: 0 0 20px 5px #e0ffe9;
+	animation-duration: 5s;
+	animation-name: blinkOff;
+	animation-iteration-count: infinite;
+}
+
+@keyframes blinkOff {
+	from {
+		opacity: 1;
+	}
+
+	to {
+		opacity: 0;
+	}
+}
+
+.tiny-circle {
+	height: 1px;
+	width: 1px; 
+	background-color: black;
+	border-radius: 100%;
+}
+
+.screen-container {
+	height:100%; 
+	width: 100%;
+	flex-direction: column;
+	box-sizing: border-box;
+}
+
+.screen-top {
+	height:30%;
+	box-sizing: border-box;
+	background-color: rgba(240, 240, 234, 0.4);
+	padding: 10px 20px 10px 20px;
+}
+
+.screen-bottom {
+	height:70%;
+	display: flex; 
+	flex-direction: column;
+	box-sizing: border-box;
+}
+
+.calc-row {
+	border-top: solid 1px #eee;
+	height: 20%;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.button {
+	border-right: solid 1px #eee;
+	width: 25%;
+	box-sizing: border-box;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+.button:nth-child(4n + 0) {
+	border-right: none;
+}
+
+.equals-div {
+	background-color: #5999ff;
+}
+
+.input-btn {
+	height: 100%; 
+	width: 100%;
+	border: none;
+	background: transparent;
+	font-size: 24px;
+	color: #abaaa5;
+}
+
+.input-btn:active, .input-btn:focus, input:focus {
+	outline:none !important;
+}
+
+.equals {
+	color: white;
+}
+
+#input, #currentInput {
+	width:100%;
+	border: none;
+	background: transparent;
+	text-align: right;
+}
+
+#input {
+	font-size: 24px;
+	border-right: .05em solid #5999ff; /* The typwriter cursor. */
+	animation: blink-caret 1.5s step-end infinite;
+}
+
+.main-input-container {
+	height: 50%;
+	display: flex; 
+	align-items: center;
+}
+
+/* The typewriter cursor effect: https://css-tricks.com/snippets/css/typewriter-effect/ */
+@keyframes blink-caret {
+	from, to { border-color: transparent }
+	50% { border-color: #5999ff; }
+}
+
+#currentInput {
+	height: 25%;
+	font-size: 16px;
+	color: #abaaa5;
+}	
+
+#clearLast {
+	float:right;
+	border: none;
+	background: transparent; 
+	color: #5999ff;
+	font-size: 16px;
+	font-weight: 100;
+}
+
+.operator, .blue {
+	color:#5999ff;
+}
+
+#clear {
+	color:#ff893a;	
+}
+
+#equals {
+  display: grid; 
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-height: 900px) {
+
+	.page-template-page-javascript-calculator .container p {
+		margin-bottom: 10%;
+		font-size: 18px;
+	}
+
 }

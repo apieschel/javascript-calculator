@@ -9,19 +9,144 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
     
-    <!-- import the webpage's javascript file -->
     <script src="/script.js" defer></script>
   </head>  
   <body>
-    <h1>Hi there!</h1>
     
-    <p>
-      I'm your cool new webpage. Made with <a href="https://glitch.com">Glitch</a>!
-    </p>
+    <main>
 
-    <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
+	<div class="container">
+
+	<div class="phone-exterior">
+		<div class="top-row-container">
+			<div class="circle1"></div>
+			<div class="circle2"></div>
+			<div class="silver-line">
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+				<div class="tiny-circle"></div>
+			</div>
+			<div class="circle3">
+				<div class="blinking-circle"></div>
+			</div>
+		</div>
+		<h1>Samsung</h1>
+		<div class="screen-exterior">
+			<div class="screen-container">
+				<div class="screen-top">
+					<div class="main-input-container">
+						<label for="input" hidden>Main Input: </label>
+						<input type="text" id="input" class="input" disabled>
+					</div>
+					<label for="currentInput" hidden>Current Input: </label>
+					<input type="text" id="currentInput" class="input" value="" disabled>
+					<label for="clearLast" hidden>Clear Last: </label>
+					<input type="button" class="input" id="clearLast" value="CE">
+				</div>
+				<div class="screen-bottom">
+					<div class="calc-row">
+						<div class="button">
+							<label for="clear" hidden>Clear: </label>
+							<input type="button" class="input input-btn" id="clear" value="C">
+						</div>
+						<div class="button blue">()</div>
+						<div class="button blue">%</div>
+						<div class="button">
+							<label for="/" hidden>Divide: </label>
+							<input type="button" class="operator input-btn" id="/" value="/">
+						</div>
+					</div>
+					<div class="calc-row">
+						<div class="button">
+							<label for="seven" hidden>Seven: </label>
+							<input type="button" class="number input-btn" id="seven" value="7">
+						</div>
+						<div class="button">
+							<label for="eight" hidden>Eight: </label>
+							<input type="button" class="number input-btn" id="eight" value="8">
+						</div>
+						<div class="button">
+							<label for="nine" hidden>Nine: </label>
+							<input type="button" class="number input-btn" id="nine" value="9">
+						</div>
+						<div class="button">
+							<label for="*" hidden>Multiply: </label>
+							<input type="button" class="operator input-btn" id="*" value="*">
+						</div>
+					</div>
+					<div class="calc-row">
+						<div class="button">
+							<label for="four" hidden>Four: </label>
+							<input type="button" class="number input-btn" id="four" value="4">
+						</div>
+						<div class="button">
+							<label for="five" hidden>Five: </label>
+							<input type="button" class="number input-btn" id="five" value="5">
+						</div>
+						<div class="button">
+							<label for="six" hidden>Six: </label>
+							<input type="button" class="number input-btn" id="six" value="6">
+						</div>
+						<div class="button">
+							<label for="-" hidden>Subtract: </label>
+							<input type="button" class="operator input-btn" id="-" value="-">
+						</div>
+					</div>
+					<div class="calc-row">
+						<div class="button">
+							<label for="one" hidden>One: </label>
+							<input type="button" class="number input-btn" id="one" value="1">
+						</div>
+						<div class="button">
+							<label for="two" hidden>Two: </label>
+							<input type="button" class="number input-btn" id="two" value="2">
+						</div>
+						<div class="button">
+							<label for="three" hidden>Three: </label>
+							<input type="button" class="number input-btn" id="three" value="3">
+						</div>
+						<div class="button">
+							<label for="+" hidden>Add: </label>
+							<input type="button" class="operator input-btn" id="+" value="+">
+						</div>
+					</div>
+					<div class="calc-row">
+						<div class="button" style="color:#abaaa5; font-size:24px;">+/-</div>
+						<div class="button">
+							<label for="zero" hidden>Zero: </label>
+							<input type="button" class="number input-btn" id="zero" value="0">
+						</div>
+						<div class="button">
+							<label for="." hidden>Decimal: </label>
+							<input type="button" class="number input-btn" id="." value=".">
+						</div>
+						<div class="button equals-div">
+							<label for="=" hidden>Calculate: </label>
+              <div type="button" class="equals input-btn" id="equals">=</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="cover-circle"></div>
+	</div>
+</div>
+</main>
+      
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
     <script src="https://button.glitch.me/button.js"></script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>		
   </body>
 </html>
