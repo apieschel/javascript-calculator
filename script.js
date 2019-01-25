@@ -51,23 +51,24 @@ clearLast.addEventListener("click", clearLastValue);
 function calculate() {
   let stringInput = currentInput.value.toString();
   let regexp = /[*\-\+\/][*\-\+\/]/;
+  let val;
   
   // First, use RegExp to test for consecutive operators
   if(regexp.test(valuesArray.join(""))) { 
     // ensure the first and last values entered were not operators
     if( input.value[0] !== '/' && input.value[0] !== '*' && input.value[0] !== '+' && input.value[0] !== '-' && 
       stringInput !== '/' && stringInput !== '*' && stringInput !== '+' && stringInput !== '-') {
-      let val = valuesArray[0] + valuesArray[valuesArray.length - 1] + stringInput;
+      val = valuesArray[0] + valuesArray[valuesArray.length - 1] + stringInput;
       currentInput.value = eval(val);
       input.value = eval(val);
+      // if the first value was an operator, but the last wasn't, then just use zero in place of the operator
     } else if(stringInput !== '/' && stringInput !== '*' && stringInput !== '+' && stringInput !== '-') {
-      // if the first value was an operator, then just use zero in its place
-      let val = "0" + valuesArray[valuesArray.length - 1] + stringInput;
+      val = "0" + valuesArray[valuesArray.length - 1] + stringInput;
       currentInput.value = eval(val);
       input.value = eval(val);
-    } else {
       // if both first and last values were operators, then use a zero in place of both
-      let val = "0" + valuesArray[valuesArray.length - 1] + "0";
+    } else {
+      val = "0" + valuesArray[valuesArray.length - 1] + "0";
       currentInput.value = 0;
       input.value = eval(val);
     }
@@ -75,7 +76,7 @@ function calculate() {
   
   // if no consecutive operators, then evaluate the simple mathematical expression, 
   // ensuring first that the last value entered wasn't an operator
-  if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && !/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) {
+  if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && !/[*\-\+\/][*\-\+\/]/.test(valuesArray.join("")) ) {
     if(eval(input.value) !== undefined) {
       input.value = eval(input.value); 
       currentInput.value = eval(input.value);
@@ -103,18 +104,19 @@ function clearLastValue() {
       let inputEnd = input.value.substr(-1, 1);
       if(inputEnd === "*" || inputEnd === "/" || inputEnd === "+" || inputEnd === "-") {
         input.value = input.value.slice(0, -1);
+        // grab all of the number characters after the last operator
         for(var i = -1; i >= -input.value.length; i--) {
           let char = input.value.substr(i, 1);
           if (char === "*" || char === "/" || char === "+" || char === "-") { break; }
           numString = numString + char; 
         }
+        // then chop them off
         input.value = input.value.slice(0, -numString.length);
       } 
     }
-  }
-  else if(currentValue !== "*" && currentValue !== "/" && currentValue !== "+" && currentValue !== "-") {
-    let re = new RegExp(currentValue + "$");
-    input.value = input.value.replace(re, "")
+  } else if(currentValue !== "*" && currentValue !== "/" && currentValue !== "+" && currentValue !== "-") {
+    let regexp = new RegExp(currentValue + "$");
+    input.value = input.value.replace(regexp, "")
   } else {
     input.value = input.value.slice(0, -1);
     for(var i = -1; i >= -input.value.length; i--) {
