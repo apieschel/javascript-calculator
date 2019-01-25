@@ -52,31 +52,28 @@ function calculate() {
 
   let input = document.getElementById("input");
   let currentInput = document.getElementById("display");
-  //console.log(currentInput.value);
+  console.log(valuesArray);
   
-  //if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-') {
-
+  // use RegExp to test for consecutive operators
+  if(/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) { 
+    if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-') {
+    let val = currentInput.value.toString() + valuesArray[valuesArray.length - 1] + valuesArray[0];
+    console.log(valuesArray);
+    console.log(val);
+    currentInput.value = eval(val);
+    input.value = eval(val);
+    }
+  }
+  
+  // if no consecutive operators, then evaluate the simple mathematical expression, ensuring that the last value entered wasn't an operator
+  if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && !/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) {
     if(eval(input.value) !== undefined) {
-      console.log(input.value);
-      input.value = eval(input.value);
-      //console.log(valuesArray);
-      //console.log(valuesArray.join(""));
-      //console.log(/[*\-\+\/][*\-\+\/]/.test(valuesArray.join("")));
-      // This is just a hack to past the 15th assertion test. The current design doesn't allow the user to enter consecutive operators 
-      // in order to avoid errors caused by use of the "eval()" method.
-      if(/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) {
-        let val = valuesArray[input.value.length - 1] + valuesArray[valuesArray.length - 1] + valuesArray[0];
-        console.log(valuesArray);
-        console.log(val);
-        currentInput.value = eval(val);
-      } else {
-        currentInput.value = eval(input.value);
-      }
-      //console.log(currentInput.value);
+      input.value = eval(input.value); 
+      currentInput.value = eval(input.value);
     }	
-
-  //}
-
+  } 
+  
+  // reset the array of entered values
   valuesArray = [];
 
 }
