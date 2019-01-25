@@ -52,16 +52,33 @@ function calculate() {
 
   let input = document.getElementById("input");
   let currentInput = document.getElementById("display");
-  console.log(valuesArray);
-  
+  console.log(input.value);
+  currentInput = currentInput.value.toString();
+  console.log(currentInput);
   // use RegExp to test for consecutive operators
   if(/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) { 
-    if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-') {
-    let val = currentInput.value.toString() + valuesArray[valuesArray.length - 1] + valuesArray[0];
-    console.log(valuesArray);
-    console.log(val);
-    currentInput.value = eval(val);
-    input.value = eval(val);
+    // ensure the first and last values entered were not operators
+    if( input.value[0] !== '/' && input.value[0] !== '*' && input.value[0] !== '+' && input.value[0] !== '-' && 
+      currentInput !== '/' && currentInput !== '*' && currentInput !== '+' && currentInput !== '-') {
+      let val = currentInput + valuesArray[valuesArray.length - 1] + valuesArray[0];
+      console.log(valuesArray);
+      console.log(val);
+      currentInput.value = eval(val);
+      input.value = eval(val);
+    } else if(currentInput !== '/' && currentInput !== '*' && currentInput !== '+' && currentInput !== '-') {
+      // if the first value was an operator, then just use zero in the mathematical expression
+      let val = currentInput + valuesArray[valuesArray.length - 1] + "0";
+      console.log(valuesArray);
+      console.log(val);
+      currentInput.value = eval(val);
+      input.value = eval(val);
+    } else {
+      // if both first and last values were operators, then use a zero in place of both
+      let val = "0" + valuesArray[valuesArray.length - 1] + "0";
+      console.log(valuesArray);
+      console.log(val);
+      currentInput.value = eval(val);
+      input.value = eval(val);
     }
   }
   
