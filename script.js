@@ -2,15 +2,17 @@ let submitBtn = document.getElementById("equals");
 let clear = document.getElementById("clear");
 let clearLast = document.getElementById("clearLast");
 let currentInput = document.getElementById("display");
+let input = document.getElementById("input");
 let valuesArray = [];
 let numbers = document.querySelectorAll(".number");
+let operators = document.querySelectorAll(".operator");
 
+// add event listeners to numbers
 for (var i = 0; i < numbers.length; i++) {				
-  let current = numbers[i]
+  let current = numbers[i];
 
   numbers[i].addEventListener("click", function() {
     let value = document.getElementById(current.id).value;
-    let input = document.getElementById("input");
 
     if( !(input.value.slice(-1) === '/' && value === '0' ||  value === '.' && input.value.slice(-1) === '.' || value === '.' && currentInput.value.indexOf('.') > -1) ) {
       input.value = input.value + value;
@@ -27,19 +29,17 @@ for (var i = 0; i < numbers.length; i++) {
   });
 }
 
-let operators = document.querySelectorAll(".operator");
-
+// add event listeners to operators
 for (var i = 0; i < operators.length; i++) {
-  let current = operators[i]
+  let current = operators[i];
   operators[i].addEventListener("click", function() {
     let value = document.getElementById(current.id).value;
-    let input = document.getElementById("input");
-    // Another way to approach the problem of consecutive operators would be do simply not allow the user to enter them. 
+    // An alternative approach to the problem of consecutive operators would be to simply not allow the user to enter them. 
     // Uncomment the "If" statement below in order to do this
     // if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && input.value !== "") {
-      valuesArray.push(currentInput.value);
-      input.value = input.value + value;
-      currentInput.value = value;
+        valuesArray.push(currentInput.value);
+        input.value = input.value + value;
+        currentInput.value = value;
     // }
   });
 }
@@ -49,8 +49,6 @@ clear.addEventListener("click", clearValue);
 clearLast.addEventListener("click", clearLastValue);
 
 function calculate() {
-  let input = document.getElementById("input");
-  let currentInput = document.getElementById("display");
   let stringInput = currentInput.value.toString();
   let regexp = /[*\-\+\/][*\-\+\/]/;
   
@@ -89,8 +87,6 @@ function calculate() {
 }
 
 function clearValue() {
-  let input = document.getElementById("input");
-  let currentInput = document.getElementById("display");
   input.value = "";
   currentInput.value = "";
   valuesArray = [];
@@ -98,7 +94,6 @@ function clearValue() {
 }
 
 function clearLastValue() {
-  let input = document.getElementById("input");
   let value = input.value;
   let currentValue = currentInput.value;
   let numString = "";
