@@ -13,9 +13,8 @@ for (var i = 0; i < numbers.length; i++) {
     let input = document.getElementById("input");
 
     if( !(input.value.slice(-1) === '/' && value === '0' ||  value === '.' && input.value.slice(-1) === '.' || value === '.' && currentInput.value.indexOf('.') > -1) ) {
-
       input.value = input.value + value;
-
+      
       if(currentInput.value === '0' ) {
         currentInput.value = value;
       } else if( currentInput.value !== '/' && currentInput.value !== '*' && currentInput.value !== '+' && 			currentInput.value !== '-' ) {
@@ -26,7 +25,6 @@ for (var i = 0; i < numbers.length; i++) {
       }
     }
   });
-
 }
 
 let operators = document.querySelectorAll(".operator");
@@ -36,11 +34,13 @@ for (var i = 0; i < operators.length; i++) {
   operators[i].addEventListener("click", function() {
     let value = document.getElementById(current.id).value;
     let input = document.getElementById("input");
-    //if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && input.value !== "") {
+    // Another way to approach the problem of consecutive operators would be do simply not allow the user to enter them. 
+    // Uncomment the "If" statement below in order to do this
+    // if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && input.value !== "") {
       valuesArray.push(currentInput.value);
       input.value = input.value + value;
       currentInput.value = value;
-    //}
+    // }
   });
 }
 
@@ -49,40 +49,34 @@ clear.addEventListener("click", clearValue);
 clearLast.addEventListener("click", clearLastValue);
 
 function calculate() {
-
   let input = document.getElementById("input");
   let currentInput = document.getElementById("display");
-  console.log(input.value);
-  currentInput = currentInput.value.toString();
-  console.log(currentInput);
-  // use RegExp to test for consecutive operators
-  if(/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) { 
+  let stringInput = currentInput.value.toString();
+  let regexp = /[*\-\+\/][*\-\+\/]/;
+  
+  // First, use RegExp to test for consecutive operators
+  if(regexp.test(valuesArray.join(""))) { 
     // ensure the first and last values entered were not operators
     if( input.value[0] !== '/' && input.value[0] !== '*' && input.value[0] !== '+' && input.value[0] !== '-' && 
-      currentInput !== '/' && currentInput !== '*' && currentInput !== '+' && currentInput !== '-') {
-      let val = currentInput + valuesArray[valuesArray.length - 1] + valuesArray[0];
-      console.log(valuesArray);
-      console.log(val);
+      stringInput !== '/' && stringInput !== '*' && stringInput !== '+' && stringInput !== '-') {
+      let val = valuesArray[0] + valuesArray[valuesArray.length - 1] + stringInput;
       currentInput.value = eval(val);
       input.value = eval(val);
-    } else if(currentInput !== '/' && currentInput !== '*' && currentInput !== '+' && currentInput !== '-') {
-      // if the first value was an operator, then just use zero in the mathematical expression
-      let val = currentInput + valuesArray[valuesArray.length - 1] + "0";
-      console.log(valuesArray);
-      console.log(val);
+    } else if(stringInput !== '/' && stringInput !== '*' && stringInput !== '+' && stringInput !== '-') {
+      // if the first value was an operator, then just use zero in its place
+      let val = "0" + valuesArray[valuesArray.length - 1] + stringInput;
       currentInput.value = eval(val);
       input.value = eval(val);
     } else {
       // if both first and last values were operators, then use a zero in place of both
       let val = "0" + valuesArray[valuesArray.length - 1] + "0";
-      console.log(valuesArray);
-      console.log(val);
-      currentInput.value = eval(val);
+      currentInput.value = 0;
       input.value = eval(val);
     }
   }
   
-  // if no consecutive operators, then evaluate the simple mathematical expression, ensuring that the last value entered wasn't an operator
+  // if no consecutive operators, then evaluate the simple mathematical expression, 
+  // ensuring first that the last value entered wasn't an operator
   if( input.value.slice(-1) !== '/' && input.value.slice(-1) !== '*' && input.value.slice(-1) !== '+' && input.value.slice(-1) !== '-' && !/[*\-\+\/][*\-\+\/]/.test(valuesArray.join(""))) {
     if(eval(input.value) !== undefined) {
       input.value = eval(input.value); 
@@ -92,7 +86,6 @@ function calculate() {
   
   // reset the array of entered values
   valuesArray = [];
-
 }
 
 function clearValue() {
