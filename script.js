@@ -98,6 +98,7 @@ function clearLastValue() {
   let value = input.value;
   let currentValue = currentInput.value;
   let numString = "";
+  let char;
 
   if(currentValue === "0") {
     if(input.value !== "") {
@@ -106,7 +107,7 @@ function clearLastValue() {
         input.value = input.value.slice(0, -1);
         // grab all of the number characters after the last operator
         for(var i = -1; i >= -input.value.length; i--) {
-          let char = input.value.substr(i, 1);
+          char = input.value.substr(i, 1);
           if (char === "*" || char === "/" || char === "+" || char === "-") { break; }
           numString = numString + char; 
         }
@@ -120,7 +121,7 @@ function clearLastValue() {
   } else {
     input.value = input.value.slice(0, -1);
     for(var i = -1; i >= -input.value.length; i--) {
-      let char = input.value.substr(i, 1);
+      char = input.value.substr(i, 1);
       if (char === "*" || char === "/" || char === "+" || char === "-") { break; }
       numString = numString + char; 
     }
